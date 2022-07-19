@@ -1,4 +1,6 @@
+import 'package:coffe_project/util/coffee_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,7 +17,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
-        leading: Icon(Icons.menu),
+        leading: Icon(
+          Icons.menu,
+          color: Colors.orange,
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
@@ -46,14 +51,37 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Text(
               "Fin the best coffe for you",
-              style: TextStyle(
-                fontSize: 36,
+              style: GoogleFonts.bebasNeue(
+                fontSize: 56,
               ),
             ),
-          )
+          ),
+          SizedBox(
+            height: 25,
+          ),
           //Search Bar
-
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: TextField(
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                hintText: 'Find your coffe...',
+                focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade600)),
+                enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade600)),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 25,
+          ),
           //horizontal listviewof coffe tiles
+          Expanded(
+              child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [CoffeeTile()],
+          ))
         ],
       ),
     );
